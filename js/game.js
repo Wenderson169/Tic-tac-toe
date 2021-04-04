@@ -1,13 +1,10 @@
-// iniciar minhas variaveis
-
-let board = ['','','','','','','','','']; //representa cada square vazio
-let playerTime = 0; //representa qual player esta jogando 0 ou 1
-let symbols = ['o', 'x']; //representa o simbolo do player(escudo ou espada)
-let gameOver = false; //variavel que verifica se o jogo ja acabou
+let board = ['','','','','','','','','']; 
+let playerTime = 0; 
+let symbols = ['o', 'x']; 
+let gameOver = false; 
 let name1, name2;
 let v1 = 0, v2 = 0, empate = 0;
 let winStates = [
-    //possiveis vitorias
     [0,1,2],
     [3,4,5],
     [5,6,7],
@@ -20,18 +17,18 @@ let winStates = [
 
 function handleMove(position) {
 
-    if(gameOver) { //verifica se a variavel gameOver eh verdaderia, assim encerrando o jogo
+    if(gameOver) { 
         return;
     }
 
-    if(board[position] == ''){  //caso a posicao acessada esteja vazia, fazer:
-        board[position] = symbols[playerTime]; //a posicao clicada recebe o simbolo do player atual, podendo ser espada ou escudo
+    if(board[position] == ''){  
+        board[position] = symbols[playerTime]; 
         
-        gameOver = isWin(); // a variavel gameOver chamada um funcao que verifica se o jogo acabou ou nao
+        gameOver = isWin(); 
 
-        if(gameOver == false) { //caso gameOver seja igual a falso, faca isso
+        if(gameOver == false) { 
             
-            playerTime = (playerTime == 0) ? 1 : 0; //faz a funcao de trocar o player, colocando o numero 0 ou 1 na variavel
+            playerTime = (playerTime == 0) ? 1 : 0; 
 
         }
     }
@@ -39,7 +36,7 @@ function handleMove(position) {
     return gameOver;
 }
 
-function isWin() { //verifica se aconteceu uma jogada vencedora
+function isWin() { 
 
     for(let i = 0; i < winStates.length; i++) { 
         let seq = winStates[i];
@@ -58,9 +55,9 @@ function isWin() { //verifica se aconteceu uma jogada vencedora
 }
 
 function reset() {
-    board = ['','','','','','','','','']; //representa cada square vazio
-    playerTime = 0; //representa qual player esta jogando 0 ou 1
-    symbols = ['o', 'x']; //representa o simbolo do player(escudo ou espada)
+    board = ['','','','','','','','','']; 
+    playerTime = 0; 
+    symbols = ['o', 'x']; 
     gameOver = false;
     square = document.querySelectorAll(".square")
     square.forEach(squares => {
